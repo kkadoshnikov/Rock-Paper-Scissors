@@ -1,10 +1,11 @@
-package com.kkadoshnikov.rockpaperscissors;
+package com.kkadoshnikov.rockpaperscissors.game;
 
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import com.kkadoshnikov.rockpaperscissors.exceptions.ConfigurationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class GameResultCalculator {
      */
     public GameResult calculate(Item playersItem, Item appItem) {
         Result result = playerAppResultMap.get(playersItem).get(appItem);
-        return new GameResult(playersItem, appItem, result);
+        return new GameResult(playersItem, appItem, result, LocalDateTime.now());
     }
 
     private void configureMap() {
