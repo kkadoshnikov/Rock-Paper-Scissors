@@ -21,6 +21,11 @@ public class SubscriberPlayEventService {
         this.subscribers = subscribers;
     }
 
+    /**
+     * Handle afterGame event.
+     * @param playerId - game's player.
+     * @param gameResult - game's result.
+     */
     public void afterGame(Integer playerId, GameResult gameResult) {
         subscribers.forEach(subscriber -> {
             try {

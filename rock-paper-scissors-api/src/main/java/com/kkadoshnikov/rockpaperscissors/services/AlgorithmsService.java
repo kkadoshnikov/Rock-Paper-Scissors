@@ -23,6 +23,11 @@ public class AlgorithmsService {
     @Value("${simpleStatisticsAlgorithm.minCount}")
     private Integer minStatisticsCount;
 
+    /**
+     * Choose algorithm for game with player.
+     * @param playerId - player's Id.
+     * @return algorithm.
+     */
     public Algorithm getAlgorithm(Integer playerId) {
         if (historyService.getGameCount(playerId) < minStatisticsCount) {
             return random;

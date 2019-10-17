@@ -30,8 +30,8 @@ public class GameHistoryService implements PlayEventSubscriber {
 
     /**
      * Get Player's games count.
-     * @param playerId
-     * @return
+     * @param playerId - player's Id.
+     * @return Player's games count.
      */
     public Integer getGameCount(Integer playerId) {
         if (!userGamesHistory.containsKey(playerId)) {

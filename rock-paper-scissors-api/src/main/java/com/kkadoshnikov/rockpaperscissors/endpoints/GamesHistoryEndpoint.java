@@ -26,7 +26,7 @@ public class GamesHistoryEndpoint {
     private final GameHistoryService gameHistoryService;
 
     /**
-     * Http GET method.
+     * Get history by player's Id.
      */
     @ApiOperation(value = "Get history by player Id.", produces = "application/json")
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, value = "{id}")

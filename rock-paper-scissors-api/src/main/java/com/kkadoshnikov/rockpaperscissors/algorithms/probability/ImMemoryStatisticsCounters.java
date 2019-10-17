@@ -48,6 +48,9 @@ public class ImMemoryStatisticsCounters implements PlayEventSubscriber, Statisti
         }
 
         void increment(Item prevItem, Item currItem) {
+            if (prevItem == null) {
+                return;
+            }
             compute(Pair.of(prevItem, currItem), (pair, counter) -> counter + 1);
         }
 

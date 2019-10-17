@@ -7,6 +7,9 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+/**
+ * Game result POJO class.
+ */
 @AllArgsConstructor
 @Getter
 public class GameResult {
