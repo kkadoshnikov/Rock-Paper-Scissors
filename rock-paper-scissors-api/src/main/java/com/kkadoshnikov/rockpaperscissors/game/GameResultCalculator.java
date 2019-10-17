@@ -22,7 +22,7 @@ import static com.kkadoshnikov.rockpaperscissors.enums.Result.WIN;
 @Service
 public class GameResultCalculator {
 
-    private Map<Item, EnumMap<Item, Result>> playerAppResultMap = new EnumMap<>(Item.class);
+    private Map<Item, Map<Item, Result>> playerAppResultMap = new EnumMap<>(Item.class);
 
     public GameResultCalculator() {
         configureMap();
