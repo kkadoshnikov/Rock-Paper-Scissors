@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
 import java.util.Map;
 
 import static com.kkadoshnikov.rockpaperscissors.enums.Item.PAPER;
@@ -27,7 +28,7 @@ import static com.kkadoshnikov.rockpaperscissors.enums.Item.SCISSORS;
 public class SimpleStatisticsAlgorithm implements Algorithm {
 
     private final StatisticsCounters statisticsCounters;
-    private final Map<Item, Item> choiceByplayerItem;
+    private final Map<Item, Item> choiceByplayerItem = new HashMap<>();
 
     /**
      * Initialize method.
