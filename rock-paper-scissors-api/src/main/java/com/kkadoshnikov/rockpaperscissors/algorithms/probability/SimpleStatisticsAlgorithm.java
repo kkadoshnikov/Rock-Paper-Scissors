@@ -27,25 +27,25 @@ import static com.kkadoshnikov.rockpaperscissors.enums.Item.SCISSORS;
 public class SimpleStatisticsAlgorithm implements Algorithm {
 
     private final StatisticsCounters statisticsCounters;
-    private final Map<Item, Item> choiceByPlayersItem;
+    private final Map<Item, Item> choiceByplayerItem;
 
     /**
      * Initialize method.
      */
     @PostConstruct
     public void init() {
-        choiceByPlayersItem.put(SCISSORS, ROCK);
-        choiceByPlayersItem.put(ROCK, PAPER);
-        choiceByPlayersItem.put(PAPER, SCISSORS);
+        choiceByplayerItem.put(SCISSORS, ROCK);
+        choiceByplayerItem.put(ROCK, PAPER);
+        choiceByplayerItem.put(PAPER, SCISSORS);
 
-        if (choiceByPlayersItem.size() < Item.values().length) {
-            throw new ConfigurationException("choiceByPlayersItem  is wrong configured.");
+        if (choiceByplayerItem.size() < Item.values().length) {
+            throw new ConfigurationException("choiceByplayerItem  is wrong configured.");
         }
     }
 
     @Override
     public Item choose(Integer playerId) {
-        Item mostLikelyPlayersItem = statisticsCounters.getMostLikelyPlayersItem(playerId);
-        return choiceByPlayersItem.get(mostLikelyPlayersItem);
+        Item mostLikelyplayerItem = statisticsCounters.getMostLikelyplayerItem(playerId);
+        return choiceByplayerItem.get(mostLikelyplayerItem);
     }
 }

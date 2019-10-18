@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class GameResult {
-    private final Item playersItem;
+    private final Item playerItem;
     private final Item appsItem;
     private final Result result;
     private final LocalDateTime gameDateTime;

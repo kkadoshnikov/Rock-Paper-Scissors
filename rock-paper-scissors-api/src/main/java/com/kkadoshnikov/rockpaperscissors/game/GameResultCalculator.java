@@ -32,9 +32,9 @@ public class GameResultCalculator {
     /**
      * Calculate game result by userItem and appItem.
      */
-    public GameResult calculate(Item playersItem, Item appItem) {
-        Result result = playerAppResultMap.get(playersItem).get(appItem);
-        return new GameResult(playersItem, appItem, result, LocalDateTime.now());
+    public GameResult calculate(Item playerItem, Item appItem) {
+        Result result = playerAppResultMap.get(playerItem).get(appItem);
+        return new GameResult(playerItem, appItem, result, LocalDateTime.now());
     }
 
     private void configureMap() {

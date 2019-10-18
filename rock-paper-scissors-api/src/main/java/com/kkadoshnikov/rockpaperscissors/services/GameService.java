@@ -20,12 +20,12 @@ public class GameService {
     /**
      * Play one game with a player.
      * @param playerId - Id of player.
-     * @param playersItem - Player's choice.
+     * @param playerItem - Player's choice.
      * @return GameResult.
      */
-    public GameResult play(Integer playerId, Item playersItem) {
+    public GameResult play(Integer playerId, Item playerItem) {
         Item appItem = algorithmsService.getAlgorithm(playerId).choose(playerId);
-        GameResult gameResult = calculator.calculate(playersItem, appItem);
+        GameResult gameResult = calculator.calculate(playerItem, appItem);
         subscriberPlayEventService.afterGame(playerId, gameResult);
         return gameResult;
     }

@@ -36,8 +36,8 @@ public class PlayEndpoint {
     @ResponseBody
     public GameResult play(
             @RequestParam("playerId") Integer playerId,
-            @RequestParam("playersItem") Item playersItem
+            @RequestParam("playerItem") Item playerItem
     ) {
-        return gameService.play(playerId, playersItem);
+        return gameService.play(playerId, playerItem);
     }
 }

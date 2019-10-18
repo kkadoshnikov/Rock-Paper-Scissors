@@ -23,12 +23,12 @@ public class ImMemoryStatisticsCounters implements PlayEventSubscriber, Statisti
     @Override
     public void afterGame(Integer playerId, GameResult gameResult) {
         playerCountersMap.putIfAbsent(playerId, new Counters());
-        Item lastItem = playerLastItemMap.put(playerId, gameResult.getPlayersItem());
-        playerCountersMap.get(playerId).increment(lastItem, gameResult.getPlayersItem());
+        Item lastItem = playerLastItemMap.put(playerId, gameResult.getPlayerItem());
+        playerCountersMap.get(playerId).increment(lastItem, gameResult.getPlayerItem());
     }
 
     @Override
-    public Item getMostLikelyPlayersItem(Integer playerId) {
+    public Item getMostLikelyplayerItem(Integer playerId) {
         Item lastItem = playerLastItemMap.getOrDefault(playerId, Item.PAPER);
         return Optional.ofNullable(playerCountersMap.get(playerId))
                 .flatMap(counters -> counters.getMaxCurr(lastItem))

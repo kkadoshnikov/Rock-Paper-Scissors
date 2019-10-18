@@ -10,5 +10,5 @@ public interface StatisticsCounters {
     /**
      * Return most likely Player's item.
      */
-    Item getMostLikelyPlayersItem(Integer playerId);
+    Item getMostLikelyplayerItem(Integer playerId);
 }
