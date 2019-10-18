@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 public class AlgorithmsService {
 
     @Autowired
-    @Qualifier("randomAlgorithm")
-    private Algorithm random;
+    @Qualifier("arstechnicaAlgorithm")
+    private Algorithm arstechnica;
     @Autowired
     @Qualifier("simpleStatisticsAlgorithm")
     private Algorithm simpleStatistics;
@@ -30,7 +30,7 @@ public class AlgorithmsService {
      */
     public Algorithm getAlgorithm(Integer playerId) {
         if (historyService.getGameCount(playerId) < minStatisticsCount) {
-            return random;
+            return arstechnica;
         }
         return simpleStatistics;
     }

@@ -30,7 +30,6 @@ public class SimpleStatisticsAlgorithmTest {
     @Before
     public void setUp() {
         simpleStatisticsAlgorithm = new SimpleStatisticsAlgorithm(statisticsCounters);
-        simpleStatisticsAlgorithm.init();
     }
 
     @Test
