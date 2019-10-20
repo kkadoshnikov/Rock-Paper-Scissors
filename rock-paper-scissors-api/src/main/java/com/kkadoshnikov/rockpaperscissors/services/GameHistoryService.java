@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.services;
 
-import com.kkadoshnikov.rockpaperscissors.algorithms.probability.StatisticsCounters;
+import com.kkadoshnikov.rockpaperscissors.strategies.probability.StatisticsCounters;
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;

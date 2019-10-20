@@ -1,4 +1,4 @@
-package com.kkadoshnikov.rockpaperscissors.algorithms;
+package com.kkadoshnikov.rockpaperscissors.strategies;
 
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
@@ -13,7 +13,7 @@ import static com.kkadoshnikov.rockpaperscissors.enums.Result.LOSE;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.WIN;
 
 /**
- * Implementation of Algorithm offered by arstechnica website.
+ * Implementation of strategy offered by arstechnica website.
  * https://arstechnica.com/science/2014/05/win-at-rock-paper-scissors-by-knowing-thy-opponent/
  *
  * Therefore, this is the best way to win at rock-paper-scissors: if you lose the first round, switch to the thing
@@ -26,17 +26,17 @@ import static com.kkadoshnikov.rockpaperscissors.enums.Result.WIN;
  */
 @Service
 @RequiredArgsConstructor
-public class ArstechnicaAlgorithm implements Algorithm, PlayEventSubscriber {
+public class ArstechnicaStrategy implements Strategy, PlayEventSubscriber {
 
     private Map<Integer, GameResult> lastResultMap = new HashMap<>();
-    private final RandomAlgorithm randomAlgorithm;
+    private final RandomStrategy randomStrategy;
 
     @Override
     public Item choose(Integer playerId) {
         GameResult lastResult = lastResultMap.get(playerId);
 
         if (lastResult == null) {
-            return randomAlgorithm.choose(playerId);
+            return randomStrategy.choose(playerId);
         }
 
         // If player win the first round, switch to the thing that beats his thing.
@@ -50,8 +50,8 @@ public class ArstechnicaAlgorithm implements Algorithm, PlayEventSubscriber {
             return lastResult.getAppsItem().beatenBy();
         }
 
-        // There are no rules for a draw, so use random algorithm.
-        return randomAlgorithm.choose(playerId);
+        // There are no rules for a draw, so use random strategy.
+        return randomStrategy.choose(playerId);
     }
 
     @Override

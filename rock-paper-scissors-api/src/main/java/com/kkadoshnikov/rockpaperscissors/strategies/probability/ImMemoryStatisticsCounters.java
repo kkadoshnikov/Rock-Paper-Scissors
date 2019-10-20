@@ -1,4 +1,4 @@
-package com.kkadoshnikov.rockpaperscissors.algorithms.probability;
+package com.kkadoshnikov.rockpaperscissors.strategies.probability;
 
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;

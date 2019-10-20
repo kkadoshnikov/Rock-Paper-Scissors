@@ -1,4 +1,4 @@
-package com.kkadoshnikov.rockpaperscissors.algorithms.probability;
+package com.kkadoshnikov.rockpaperscissors.strategies.probability;
 
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import org.apache.commons.lang3.tuple.Pair;
@@ -6,7 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.Map;
 
 /**
- * Count user's statistic for SimpleStatisticsAlgorithm.
+ * Count user's statistic for SimpleStatisticsStrategy.
  */
 public interface StatisticsCounters {
 

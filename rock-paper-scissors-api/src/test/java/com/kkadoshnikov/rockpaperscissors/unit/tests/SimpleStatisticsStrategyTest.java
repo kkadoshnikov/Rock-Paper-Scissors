@@ -1,7 +1,7 @@
 package com.kkadoshnikov.rockpaperscissors.unit.tests;
 
-import com.kkadoshnikov.rockpaperscissors.algorithms.probability.SimpleStatisticsAlgorithm;
-import com.kkadoshnikov.rockpaperscissors.algorithms.probability.StatisticsCounters;
+import com.kkadoshnikov.rockpaperscissors.strategies.probability.SimpleStatisticsStrategy;
+import com.kkadoshnikov.rockpaperscissors.strategies.probability.StatisticsCounters;
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,25 +18,25 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * Tests for SimpleStatisticsAlgorithm class.
+ * Tests for SimpleStatisticsStrategy class.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class SimpleStatisticsAlgorithmTest {
+public class SimpleStatisticsStrategyTest {
 
-    private SimpleStatisticsAlgorithm simpleStatisticsAlgorithm;
+    private SimpleStatisticsStrategy simpleStatisticsStrategy;
     @Mock
     private StatisticsCounters statisticsCounters;
 
     @Before
     public void setUp() {
-        simpleStatisticsAlgorithm = new SimpleStatisticsAlgorithm(statisticsCounters);
+        simpleStatisticsStrategy = new SimpleStatisticsStrategy(statisticsCounters);
     }
 
     @Test
     public void chooseVsRockTest() {
         when(statisticsCounters.getMostLikelyplayerItem(1)).thenReturn(ROCK);
 
-        Item actualResult = simpleStatisticsAlgorithm.choose(1);
+        Item actualResult = simpleStatisticsStrategy.choose(1);
 
         assertEquals(PAPER, actualResult);
         verify(statisticsCounters, Mockito.times(1)).getMostLikelyplayerItem(1);
@@ -46,7 +46,7 @@ public class SimpleStatisticsAlgorithmTest {
     public void chooseVsPaperTest() {
         when(statisticsCounters.getMostLikelyplayerItem(1)).thenReturn(PAPER);
 
-        Item actualResult = simpleStatisticsAlgorithm.choose(1);
+        Item actualResult = simpleStatisticsStrategy.choose(1);
 
         assertEquals(SCISSORS, actualResult);
         verify(statisticsCounters, Mockito.times(1)).getMostLikelyplayerItem(1);
@@ -56,7 +56,7 @@ public class SimpleStatisticsAlgorithmTest {
     public void chooseVsScissorsTest() {
         when(statisticsCounters.getMostLikelyplayerItem(1)).thenReturn(SCISSORS);
 
-        Item actualResult = simpleStatisticsAlgorithm.choose(1);
+        Item actualResult = simpleStatisticsStrategy.choose(1);
 
         assertEquals(ROCK, actualResult);
         verify(statisticsCounters, Mockito.times(1)).getMostLikelyplayerItem(1);

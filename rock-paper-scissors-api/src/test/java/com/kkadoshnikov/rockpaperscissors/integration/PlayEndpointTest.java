@@ -44,11 +44,11 @@ public class PlayEndpointTest {
 
     @Test
     public void playTenGameTest() throws Exception {
-        // Prepare statistics for SimpleStatisticsAlgorithm.
+        // Prepare statistics for SimpleStatisticsStrategy.
         for (int i = 0; i < 5; i++) {
             playOneGame(1, ROCK);
         }
-        // SimpleStatisticsAlgorithm must predict that player chooses ROCK and choose PAPER.
+        // SimpleStatisticsStrategy must predict that player chooses ROCK and choose PAPER.
         for (int i = 0; i < 30; i++) {
             Result actualResult = playOneGame(1, ROCK).getResult();
             assertEquals(LOSE, actualResult);

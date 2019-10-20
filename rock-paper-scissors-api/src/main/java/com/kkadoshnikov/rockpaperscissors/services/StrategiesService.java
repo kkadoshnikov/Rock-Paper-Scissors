@@ -1,34 +1,34 @@
 package com.kkadoshnikov.rockpaperscissors.services;
 
-import com.kkadoshnikov.rockpaperscissors.algorithms.Algorithm;
+import com.kkadoshnikov.rockpaperscissors.strategies.Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
- * This service choice algorithm which should be used.
+ * This service choice strategy which should be used.
  */
 @Service
-public class AlgorithmsService {
+public class StrategiesService {
 
     @Autowired
-    @Qualifier("arstechnicaAlgorithm")
-    private Algorithm arstechnica;
+    @Qualifier("arstechnicaStrategy")
+    private Strategy arstechnica;
     @Autowired
-    @Qualifier("simpleStatisticsAlgorithm")
-    private Algorithm simpleStatistics;
+    @Qualifier("simpleStatisticsStrategy")
+    private Strategy simpleStatistics;
     @Autowired
     private GameHistoryService historyService;
-    @Value("${simpleStatisticsAlgorithm.minCount}")
+    @Value("${simpleStatisticsStrategy.minCount}")
     private Integer minStatisticsCount;
 
     /**
-     * Choose algorithm for game with player.
+     * Choose strategy for game with player.
      * @param playerId - player's Id.
-     * @return algorithm.
+     * @return strategy.
      */
-    public Algorithm getAlgorithm(Integer playerId) {
+    public Strategy getStrategy(Integer playerId) {
         if (historyService.getGameCount(playerId) < minStatisticsCount) {
             return arstechnica;
         }

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GameService {
 
-    private final AlgorithmsService algorithmsService;
+    private final StrategiesService strategiesService;
     private final GameResultCalculator calculator;
     private final SubscriberPlayEventService subscriberPlayEventService;
 
@@ -24,7 +24,7 @@ public class GameService {
      * @return GameResult.
      */
     public GameResult play(Integer playerId, Item playerItem) {
-        Item appItem = algorithmsService.getAlgorithm(playerId).choose(playerId);
+        Item appItem = strategiesService.getStrategy(playerId).choose(playerId);
         GameResult gameResult = calculator.calculate(playerItem, appItem);
         subscriberPlayEventService.afterGame(playerId, gameResult);
         return gameResult;

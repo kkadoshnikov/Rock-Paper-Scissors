@@ -1,4 +1,4 @@
-package com.kkadoshnikov.rockpaperscissors.algorithms;
+package com.kkadoshnikov.rockpaperscissors.strategies;
 
 import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import org.springframework.stereotype.Service;
@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Random algorithm. It can be used in games with new users or in case of problems with load.
+ * Choose next item using random. It can be used in games with new users or in case of problems with load.
  */
 @Service
-public class RandomAlgorithm implements Algorithm {
+public class RandomStrategy implements Strategy {
 
     @Override
     public Item choose(Integer playerId) {
