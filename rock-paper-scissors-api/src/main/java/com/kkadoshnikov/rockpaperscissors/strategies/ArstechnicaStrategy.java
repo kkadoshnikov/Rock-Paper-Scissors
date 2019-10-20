@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.strategies;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import com.kkadoshnikov.rockpaperscissors.services.PlayEventSubscriber;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class ArstechnicaStrategy implements Strategy, PlayEventSubscriber {
     private final RandomStrategy randomStrategy;
 
     @Override
-    public Item choose(Integer playerId) {
+    public Symbol choose(Integer playerId) {
         GameResult lastResult = lastResultMap.get(playerId);
 
         if (lastResult == null) {
@@ -41,13 +41,13 @@ public class ArstechnicaStrategy implements Strategy, PlayEventSubscriber {
 
         // If player win the first round, switch to the thing that beats his thing.
         if (lastResult.getResult().equals(WIN)) {
-            return lastResult.getPlayerItem().beatenBy();
+            return lastResult.getPlayerSymbol().beatenBy();
         }
 
         // If player lose, don't keep playing the same thing, but instead switch to the thing that would beat the thing
         // that app just played.
         if (lastResult.getResult().equals(LOSE)) {
-            return lastResult.getAppsItem().beatenBy();
+            return lastResult.getAppsSymbol().beatenBy();
         }
 
         // There are no rules for a draw, so use random strategy.

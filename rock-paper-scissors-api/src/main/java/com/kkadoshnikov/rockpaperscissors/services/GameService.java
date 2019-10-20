@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.services;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import com.kkadoshnikov.rockpaperscissors.game.GameResultCalculator;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +20,12 @@ public class GameService {
     /**
      * Play one game with a player.
      * @param playerId - Id of player.
-     * @param playerItem - Player's choice.
+     * @param playerSymbol - Player's choice.
      * @return GameResult.
      */
-    public GameResult play(Integer playerId, Item playerItem) {
-        Item appItem = strategiesService.getStrategy(playerId).choose(playerId);
-        GameResult gameResult = calculator.calculate(playerItem, appItem);
+    public GameResult play(Integer playerId, Symbol playerSymbol) {
+        Symbol appSymbol = strategiesService.getStrategy(playerId).choose(playerId);
+        GameResult gameResult = calculator.calculate(playerSymbol, appSymbol);
         subscriberPlayEventService.afterGame(playerId, gameResult);
         return gameResult;
     }

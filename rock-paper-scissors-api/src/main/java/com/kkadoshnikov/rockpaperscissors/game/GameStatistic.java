@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.game;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,6 +16,6 @@ import java.util.Map;
 public class GameStatistic {
 
     private final Map<Result, Long> results;
-    private final Map<Pair<Item, Item>, Long> itemAfterItemCounts;
-    private final Map<Pair<Item, Item>, Double> itemAfterItemProbability;
+    private final Map<Pair<Symbol, Symbol>, Long> symbolAfterSymbolCounts;
+    private final Map<Pair<Symbol, Symbol>, Double> symbolAfterSymbolProbability;
 }

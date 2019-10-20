@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.strategies.probability;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Map;
@@ -11,14 +11,14 @@ import java.util.Map;
 public interface StatisticsCounters {
 
     /**
-     * Return most likely Player's item.
+     * Return most likely Player's symbol.
      */
-    Item getMostLikelyplayerItem(Integer playerId);
+    Symbol getMostLikelyplayerSymbol(Integer playerId);
 
     /**
-     * Get counters of (prevItem, currItem) pairs.
+     * Get counters of (prevSymbol, currSymbol) pairs.
      * @param playerId - Player's Id.
      * @return counters.
      */
-    Map<Pair<Item, Item>, Long> getCounters(Integer playerId);
+    Map<Pair<Symbol, Symbol>, Long> getCounters(Integer playerId);
 }

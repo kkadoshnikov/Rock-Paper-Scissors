@@ -2,7 +2,7 @@ package com.kkadoshnikov.rockpaperscissors.endpoints;
 
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import com.kkadoshnikov.rockpaperscissors.services.GameService;
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -36,8 +36,8 @@ public class PlayEndpoint {
     @ResponseBody
     public GameResult play(
             @RequestParam("playerId") Integer playerId,
-            @RequestParam("playerItem") Item playerItem
+            @RequestParam("playerSymbol") Symbol playerSymbol
     ) {
-        return gameService.play(playerId, playerItem);
+        return gameService.play(playerId, playerSymbol);
     }
 }

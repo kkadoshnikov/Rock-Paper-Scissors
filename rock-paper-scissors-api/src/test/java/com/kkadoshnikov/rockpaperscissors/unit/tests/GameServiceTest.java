@@ -15,7 +15,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.time.LocalDateTime;
 
-import static com.kkadoshnikov.rockpaperscissors.enums.Item.ROCK;
+import static com.kkadoshnikov.rockpaperscissors.enums.Symbol.ROCK;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.DRAW;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;

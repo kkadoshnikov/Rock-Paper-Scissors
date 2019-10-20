@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.game;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Getter
 public class GameResult {
-    private final Item playerItem;
-    private final Item appsItem;
+    private final Symbol playerSymbol;
+    private final Symbol appsSymbol;
     private final Result result;
     private final LocalDateTime gameDateTime;
 }

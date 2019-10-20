@@ -1,6 +1,6 @@
 package com.kkadoshnikov.rockpaperscissors.unit.tests;
 
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import com.kkadoshnikov.rockpaperscissors.game.GameResultCalculator;
@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import java.time.LocalDateTime;
 
-import static com.kkadoshnikov.rockpaperscissors.enums.Item.PAPER;
-import static com.kkadoshnikov.rockpaperscissors.enums.Item.ROCK;
-import static com.kkadoshnikov.rockpaperscissors.enums.Item.SCISSORS;
+import static com.kkadoshnikov.rockpaperscissors.enums.Symbol.PAPER;
+import static com.kkadoshnikov.rockpaperscissors.enums.Symbol.ROCK;
+import static com.kkadoshnikov.rockpaperscissors.enums.Symbol.SCISSORS;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.DRAW;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.LOSE;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.WIN;
@@ -25,8 +25,8 @@ public class GameResultCalculatorTest {
     @Test
     public void rockRockTest() {
         BaseGameCalculatorTest
-                .playersItem(ROCK)
-                .appItem(ROCK)
+                .playersSymbol(ROCK)
+                .appSymbol(ROCK)
                 .expectedResult(DRAW)
                 .test();
     }
@@ -34,8 +34,8 @@ public class GameResultCalculatorTest {
     @Test
     public void rockPaperTest() {
         BaseGameCalculatorTest
-                .playersItem(ROCK)
-                .appItem(PAPER)
+                .playersSymbol(ROCK)
+                .appSymbol(PAPER)
                 .expectedResult(LOSE)
                 .test();
     }
@@ -43,8 +43,8 @@ public class GameResultCalculatorTest {
     @Test
     public void rockScissorsTest() {
         BaseGameCalculatorTest
-                .playersItem(ROCK)
-                .appItem(SCISSORS)
+                .playersSymbol(ROCK)
+                .appSymbol(SCISSORS)
                 .expectedResult(WIN)
                 .test();
     }
@@ -52,8 +52,8 @@ public class GameResultCalculatorTest {
     @Test
     public void paperRockTest() {
         BaseGameCalculatorTest
-                .playersItem(PAPER)
-                .appItem(ROCK)
+                .playersSymbol(PAPER)
+                .appSymbol(ROCK)
                 .expectedResult(WIN)
                 .test();
     }
@@ -61,8 +61,8 @@ public class GameResultCalculatorTest {
     @Test
     public void paperPaperTest() {
         BaseGameCalculatorTest
-                .playersItem(PAPER)
-                .appItem(PAPER)
+                .playersSymbol(PAPER)
+                .appSymbol(PAPER)
                 .expectedResult(DRAW)
                 .test();
     }
@@ -70,8 +70,8 @@ public class GameResultCalculatorTest {
     @Test
     public void paperScissorsTest() {
         BaseGameCalculatorTest
-                .playersItem(PAPER)
-                .appItem(SCISSORS)
+                .playersSymbol(PAPER)
+                .appSymbol(SCISSORS)
                 .expectedResult(LOSE)
                 .test();
     }
@@ -79,8 +79,8 @@ public class GameResultCalculatorTest {
     @Test
     public void scissorsRockTest() {
         BaseGameCalculatorTest
-                .playersItem(SCISSORS)
-                .appItem(ROCK)
+                .playersSymbol(SCISSORS)
+                .appSymbol(ROCK)
                 .expectedResult(LOSE)
                 .test();
     }
@@ -88,8 +88,8 @@ public class GameResultCalculatorTest {
     @Test
     public void scissorsPaperTest() {
         BaseGameCalculatorTest
-                .playersItem(SCISSORS)
-                .appItem(PAPER)
+                .playersSymbol(SCISSORS)
+                .appSymbol(PAPER)
                 .expectedResult(WIN)
                 .test();
     }
@@ -97,8 +97,8 @@ public class GameResultCalculatorTest {
     @Test
     public void scissorsScissorsTest() {
         BaseGameCalculatorTest
-                .playersItem(SCISSORS)
-                .appItem(SCISSORS)
+                .playersSymbol(SCISSORS)
+                .appSymbol(SCISSORS)
                 .expectedResult(DRAW)
                 .test();
     }
@@ -106,18 +106,18 @@ public class GameResultCalculatorTest {
     private static class BaseGameCalculatorTest {
 
         private static final GameResultCalculator calculator = new GameResultCalculator();
-        private Item playersItem;
-        private Item appItem;
+        private Symbol playersSymbol;
+        private Symbol appSymbol;
         private Result expectedResult;
 
-        private static BaseGameCalculatorTest playersItem(Item playersItem) {
+        private static BaseGameCalculatorTest playersSymbol(Symbol playersSymbol) {
             BaseGameCalculatorTest baseGameCalculatorTest = new BaseGameCalculatorTest();
-            baseGameCalculatorTest.playersItem = playersItem;
+            baseGameCalculatorTest.playersSymbol = playersSymbol;
             return baseGameCalculatorTest;
         }
 
-        private BaseGameCalculatorTest appItem(Item appItem) {
-            this.appItem = appItem;
+        private BaseGameCalculatorTest appSymbol(Symbol appSymbol) {
+            this.appSymbol = appSymbol;
             return this;
         }
 
@@ -128,9 +128,9 @@ public class GameResultCalculatorTest {
 
         private void test() {
             LocalDateTime beforeCalculation = LocalDateTime.now();
-            GameResult result = calculator.calculate(playersItem, appItem);
-            assertEquals(playersItem, result.getPlayerItem());
-            assertEquals(appItem, result.getAppsItem());
+            GameResult result = calculator.calculate(playersSymbol, appSymbol);
+            assertEquals(playersSymbol, result.getPlayerSymbol());
+            assertEquals(appSymbol, result.getAppsSymbol());
             assertEquals(expectedResult, result.getResult());
             assertFalse(result.getGameDateTime().isBefore(beforeCalculation));
             assertFalse(result.getGameDateTime().isAfter(LocalDateTime.now()));

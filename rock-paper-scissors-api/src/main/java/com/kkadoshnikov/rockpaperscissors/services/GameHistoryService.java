@@ -1,7 +1,7 @@
 package com.kkadoshnikov.rockpaperscissors.services;
 
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.strategies.probability.StatisticsCounters;
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import com.kkadoshnikov.rockpaperscissors.game.GameStatistic;
@@ -60,10 +60,11 @@ public class GameHistoryService implements PlayEventSubscriber {
 
     public GameStatistic getStatistic(Integer playerId) {
         Map<Result, Long> results = calculateResults(playerId);
-        Map<Pair<Item, Item>, Long> itemAfterItemCounts = statisticsCounters.getCounters(playerId);
-        Map<Pair<Item, Item>, Double> itemAfterItemProbability = calculateItemAfterItemProbability(itemAfterItemCounts);
+        Map<Pair<Symbol, Symbol>, Long> symbolAfterSymbolCounts = statisticsCounters.getCounters(playerId);
+        Map<Pair<Symbol, Symbol>, Double> symbolAfterSymbolProbability = calculateSymbolAfterSymbolProbability(
+                symbolAfterSymbolCounts);
 
-        return new GameStatistic(results, itemAfterItemCounts, itemAfterItemProbability);
+        return new GameStatistic(results, symbolAfterSymbolCounts, symbolAfterSymbolProbability);
     }
 
     private Map<Result, Long> calculateResults(Integer playerId) {
@@ -72,16 +73,16 @@ public class GameHistoryService implements PlayEventSubscriber {
                 .collect(Collectors.groupingBy(GameResult::getResult, Collectors.counting()));
     }
 
-    private Map<Pair<Item, Item>, Double> calculateItemAfterItemProbability(
-            Map<Pair<Item, Item>, Long> itemAfterItemCounts
+    private Map<Pair<Symbol, Symbol>, Double> calculateSymbolAfterSymbolProbability(
+            Map<Pair<Symbol, Symbol>, Long> symbolAfterSymbolCounts
     ) {
-        Map<Pair<Item, Item>, Double> result = new HashMap<>();
-        for (Item prev : Item.values()) {
-            long total = Stream.of(Item.values())
-                    .mapToLong(cur -> itemAfterItemCounts.getOrDefault(Pair.of(prev, cur), 0L))
+        Map<Pair<Symbol, Symbol>, Double> result = new HashMap<>();
+        for (Symbol prev : Symbol.values()) {
+            long total = Stream.of(Symbol.values())
+                    .mapToLong(cur -> symbolAfterSymbolCounts.getOrDefault(Pair.of(prev, cur), 0L))
                     .sum();
-            for (Item cur : Item.values()) {
-                double probability = (double) itemAfterItemCounts.get(Pair.of(prev, cur)) / total;
+            for (Symbol cur : Symbol.values()) {
+                double probability = (double) symbolAfterSymbolCounts.get(Pair.of(prev, cur)) / total;
                 result.put(Pair.of(prev, cur), probability);
             }
         }

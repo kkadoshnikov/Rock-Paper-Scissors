@@ -1,7 +1,7 @@
 package com.kkadoshnikov.rockpaperscissors.integration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kkadoshnikov.rockpaperscissors.enums.Item;
+import com.kkadoshnikov.rockpaperscissors.enums.Symbol;
 import com.kkadoshnikov.rockpaperscissors.enums.Result;
 import com.kkadoshnikov.rockpaperscissors.game.GameResult;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static com.kkadoshnikov.rockpaperscissors.enums.Item.ROCK;
+import static com.kkadoshnikov.rockpaperscissors.enums.Symbol.ROCK;
 import static com.kkadoshnikov.rockpaperscissors.enums.Result.LOSE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -36,8 +36,8 @@ public class PlayEndpointTest {
     public void playOneGameTest() throws Exception {
         GameResult gameResult = playOneGame(1, ROCK);
 
-        assertEquals(ROCK, gameResult.getPlayerItem());
-        assertNotNull(gameResult.getAppsItem());
+        assertEquals(ROCK, gameResult.getPlayerSymbol());
+        assertNotNull(gameResult.getAppsSymbol());
         assertNotNull(gameResult.getResult());
         assertNotNull(gameResult.getGameDateTime());
     }
@@ -55,10 +55,10 @@ public class PlayEndpointTest {
         }
     }
 
-    private GameResult playOneGame(Integer playerId, Item playerItem) throws Exception {
+    private GameResult playOneGame(Integer playerId, Symbol playerSymbol) throws Exception {
         String result = mvc.perform(get("/play")
                 .param("playerId", playerId.toString())
-                .param("playerItem", playerItem.name()))
+                .param("playerSymbol", playerSymbol.name()))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
