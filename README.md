@@ -23,19 +23,6 @@ Quick build:
 Run jar file in rock-paper-scissors-api/target directory:
 >java -jar rock-paper-scissors-api-0.0.1-SNAPSHOT.jar
 
-### Tests
-There are three files with test data-sets. It located at the **'data-sets'** folder
-
-* **test-10.csv** - 10 bids (rows)
-* **test-100.csv** - 100 bids (rows)
-* **test-300.csv** - 300 bids (rows)
-
-Run jar file with the following parameters:
->java -jar rps-game-1.0.jar -s [strategy] -t [test data-set file path]
-
-Example:
->java -jar rps-game-1.0.jar -s markov -t ../data-sets/test-10.csv
-
 ## Endpoints
 
 ### Play endpoint
